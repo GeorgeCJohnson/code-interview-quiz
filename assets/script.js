@@ -53,3 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
         answerButtonsEl[1].setAttribute('id', 'answer-buttons' + i);
         answerButtons[i].addEventListener('click', checkAnswers);
     }
+    
+    //Gradng the answers
+
+    var scoreElement = document.getElementById('score');
+
+    //User initials
+    var initialsInput = document.getElementById('initials');
+    var submitButton = document.getElementById('submit');
+
+    submitButton.addEventListener('click', saveScore);
