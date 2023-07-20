@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             correctAnswer: 0,
         },
         ];
-    }
+
+
     //Variables
     var questionIndex = 0;
     var time = questions.length * 15;
@@ -43,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function clockTick() {
         time--;
         startTimer.textContent = time;
-
+    }
+    
         if (time <= 0) {
             clearInterval(timeInterval);
             endQuiz();
