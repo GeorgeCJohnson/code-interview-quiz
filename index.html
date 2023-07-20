@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Quiz</title>
-    <link rel="reset" href="./assets/reset.css">
-    <link rel="stylesheet" href="./assets/stylesheet.css">
+    <title>JavaScript Quiz</title>
 </head>
 <body>
-    <nav>
-        <a href="./highscores.html">View Highscores</a>
-        <p id="start-timer">time: <span id="time"></span></p>
-    <header>
-        <h1>Interview Coding Quiz</h1>
-    </header>
-    <div class="wrapper">
-        <div class="card">
-            <div class="card-header">
-                <h2>Instructions</h2>
-            </div>
-            <div class="card-body">
-                <p>Click the button below to start the quiz. You will have 60 seconds to answer 5 questions. If you answer incorrectly, 10 seconds will be deducted from the timer. Your score will be the time remaining.</p>
-            </div>
-            <div class="card-footer">
-                <button id="start" class="btn">Start Quiz</button>
-            </div>
+    <div id="start-screen">
+        <h1>JavaScript Quiz</h1>
+        <button id="start-button">Start Quiz</button>
+    </div>
+
+    <div id="question" class="hide">
+        <h2 id="question-text"></h2>
+        <div id="answerButtons">
+            <button data-answer="0"></button>
+            <button data-answer="1"></button>
+            <button data-answer="2"></button>
+            <button data-answer="3"></button>
         </div>
+    </div>
+
+    <div id="end-screen" class="hide">
+        <h2>Quiz Finished!</h2>
+        <p>Your final score is: <span id="final-score"></span></p>
+        <label for="initials">Enter your initials:</label>
+        <input type="text" id="initials">
+        <button id="submit">Submit</button>
+    </div>
+
+    <div id="result"></div>
+
     <script src="./assets/script.js"></script>
 </body>
 </html>
