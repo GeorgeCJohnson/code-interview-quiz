@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         {
             question: 'What is the NaN property of the global object?',
-            answers: ['Not a Number', 'Not a Null', 'Not a Negative', 'Not a Negative'],
+            answers: ['Not a Number', 'Not a Null', 'Not a Negative', 'Not a Ninja'],
             correctAnswer: 0,
         },
 
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             correctAnswer: 0,
         },
         ];
-
-
+    });
+    
     //Variables
     var questionIndex = 0;
     var time = questions.length * 15;
@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //starting the quiz
     function startQuiz() {
+            //Questions retrieved from DOM
+        var questionEl = document.getElementById('question');
         var startScreenEl = document.getElementById('start-screen');
         startScreenEl.setAttribute('class', 'hide');
         questionEl.removeAttribute('class');
@@ -66,16 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
         displayQuestion();
     }
 
-    //Questions retrieved from DOM
-    var questionEl = document.getElementById('question');
-
     //Answers selection by User
-    var answerButtonsEl = document.getElementById('answerButtons');
+    var answerButtonsEl = document.querySelectorAll('[data-answer]');
     var resultEl = document.getElementById('result');
    
-        for (var i = 0; i < answerButtons.length; i++) {
-            answerButtonsEl[1].setAttribute('id', 'answerButtons' + i);
-            answerButtons[1].addEventListener('click', checkAnswers);
+        for (var i = 0; i < answerButtonsEl.length; i++) {
+            answerButtonsEl[i].setAttribute('id', 'answerButtons' + i);
+            answerButtonsEl[i].addEventListener('click', checkAnswers);
        }
 
     //Tmeout for wrong answers
@@ -83,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var answer = event.target.getAttribute('data-answer');
         var result = document.getElementById('result');
 
-        if (answer === questions[questionIndex].correctAnswer) {
+        if (parseInt(answer, 10) === questions[questionIndex].correctAnswer) {
             result.textContent = 'Correct!';
         } else {
             result.textContent = 'Take time to study this content!';
@@ -95,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             displayQuestion();
         }
-
+    }
+    
     //Gradng the answers
     var scoreElement = document.getElementById('score');
 
@@ -127,5 +127,5 @@ document.addEventListener('DOMContentLoaded', function() {
         endScreenEl.removeAttribute('class');
         var finalScoreEl = document.getElementById('final-score');
         finalScoreEl.textContent = time;
-        questionEl.setAttribute('class', 'hide');
-    }
+        questionEl.setAttribute('class', 'hide');}
+    
