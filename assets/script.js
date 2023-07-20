@@ -35,10 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var time = questions.length * 15;
     var timeInterval;
 
-    //Quiz start button
-    var startButton = document.getElementById('start-button');
-    startButton.addEventListener('click', startQuiz);
-
     //Timer area
     var timerEl = document.getElementById('time');
 
@@ -50,6 +46,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (time <= 0) {
             clearInterval(timeInterval);
             endQuiz();
+    }
+
+    //Quiz start button
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', startQuiz);
+
+    //starting the quiz
+    function startQuiz() {
+        var startScreenEl = document.getElementById('start-screen');
+        startScreenEl.setAttribute('class', 'hide');
+
+        questionEl.removeAttribute('class');
+
+        timeInterval = setInterval(clockTick, 1000);
+
+        startTimer.textContent = time;
+
+        displayQuestion();
     }
 
     //Tmeout for wrong answers
@@ -79,21 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (var i = 0; i < answerButtons.length; i++) {
         answerButtonsEl[1].setAttribute('id', 'answerButtons' + i);
-        answerButtons[i].addEventListener('click', checkAnswers);
-    }
-
-    //starting the quiz
-    function startQuiz() {
-        var startScreenEl = document.getElementById('start-screen');
-        startScreenEl.setAttribute('class', 'hide');
-
-        questionEl.removeAttribute('class');
-
-        timeInterval = setInterval(clockTick, 1000);
-
-        startTimer.textContent = time;
-
-        displayQuestion();
+        answerButtons[1].addEventListener('click', checkAnswers);
     }
 
     //Gradng the answers
