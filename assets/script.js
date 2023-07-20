@@ -1,4 +1,4 @@
-//Quiz operns on page load
+//Quiz opens on page load
 
 document.addEventListener('DOMContentLoaded', function() {
     var questions = [
@@ -41,16 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var timerEl = document.getElementById('time');
 
     //Timer display on page
+    var startTimer = document.getElementById('start-timer');
     function clockTick() {
         time--;
         startTimer.textContent = time;
-    }
     
         if (time <= 0) {
             clearInterval(timeInterval);
             endQuiz();
+        }
     }
-
+    
     //Quiz start button
     var startButton = document.getElementById('start-button');
     startButton.addEventListener('click', startQuiz);
