@@ -42,6 +42,34 @@ document.addEventListener('DOMContentLoaded', function() {
     //Timer area
     var timerEl = document.getElementById('time');
 
+    //Timer display on page
+    function clockTick() {
+        time--;
+        startTimer.textContent = time;
+
+        if (time <= 0) {
+            clearInterval(timeInterval);
+            endQuiz();
+    }
+
+    //Tmeout for wrong answers
+    function checkAnswers(event) {
+        var answer = event.target.getAttribute('data-answer');
+        var result = document.getElementById('result');
+
+        if (answer === questions[questionIndex].correctAnswer) {
+            result.textContent = 'Correct!';
+        } else {
+            result.textContent = 'Take time to study this content!';
+            time -= 10;
+        }
+        questionIndex++;
+        if (questionIndex === questions.length) {
+            endQuiz();  
+        } else {
+            displayQuestion();
+        }
+
     //Questions retrieved from DOM
     var questionEl = document.getElementById('question');
 
@@ -63,3 +91,4 @@ document.addEventListener('DOMContentLoaded', function() {
     var submitButton = document.getElementById('submit');
 
     submitButton.addEventListener('click', saveScore);
+
