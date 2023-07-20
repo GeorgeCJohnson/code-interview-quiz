@@ -78,10 +78,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var resultEl = document.getElementById('result');
 
     for (var i = 0; i < answerButtons.length; i++) {
-        answerButtonsEl[1].setAttribute('id', 'answer-buttons' + i);
+        answerButtonsEl[1].setAttribute('id', 'answerButtons' + i);
         answerButtons[i].addEventListener('click', checkAnswers);
     }
-    
+
+    //starting the quiz
+    function startQuiz() {
+        var startScreenEl = document.getElementById('start-screen');
+        startScreenEl.setAttribute('class', 'hide');
+
+        questionEl.removeAttribute('class');
+
+        timeInterval = setInterval(clockTick, 1000);
+
+        startTimer.textContent = time;
+
+        displayQuestion();
+    }
+
     //Gradng the answers
 
     var scoreElement = document.getElementById('score');
