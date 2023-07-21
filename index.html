@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Quiz</title>
-    <link rel="reset" href="./assets/reset.css">
-    <link rel="stylesheet" href="./assets/stylesheet.css">
-</head>
-<body>
+    <link rel="reset" href="./assets/reset.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
     <div id="start-screen">
-        <h1>JavaScript Quiz</h1>
-        <button id="start-button">Start Quiz</button>
+      <h1>JavaScript Quiz</h1>
+      <button id="start-button">Start Quiz</button>
     </div>
-
+    <section class="quiz" style="display: none;">
+        <p id="timer">Time : <span id="time">0</span></p>
     <div id="question" class="hide">
-        <h2 id="question-text"></h2>
-        <div id="answerButtons">
-            <button data-answer="0"></button>
-            <button data-answer="1"></button>
-            <button data-answer="2"></button>
-            <button data-answer="3"></button>
-        </div>
+      <h2 id="question-text"></h2>
+      <ul id="answerButtons">
+        <button class="data-answer">0</button>
+        <button class="data-answer">1</button>
+        <button class="data-answer">3</button>
+        <button class="data-answer">4</button>
+      </ul>
     </div>
 
     <div id="end-screen" class="hide">
-        <h2>Quiz Finished!</h2>
-        <p>Your final score is: <span id="final-score"></span></p>
-        <label for="initials">Enter your initials:</label>
-        <input type="text" id="initials">
-        <button id="submit">Submit</button>
+      <h2>Quiz Finished!</h2>
+      <p>Your final score is: <span id="final-score"></span></p>
+      <label for="initials">Enter your initials:</label>
+      <input type="text" id="initials" placeholder="Enter your initials" />
+      <button id="submit">Submit</button>
     </div>
+    <section id="highscore" style="display: none">
+        <h3>Great Job!</h3>
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>score</th>
+                    <th>initials</th>
+                </tr>
+            </thead>
+                <tbody id="highscorelist"></tbody>
+            </table>
+            <button id="clear-highscore">Clear</button>   
+    </section>
+    
 
     <div id="result"></div>
 
-    <script src="./assets/script.js"></script>
-</body>
+    <script src="assets/script.js"></script>
+  </body>
 </html>
