@@ -161,10 +161,6 @@ document.addEventListener ('DOMContentLoaded', function () {
         }
     }
 
-    function showHighscores() {
-        var startScreenEl = document.getElementById('start-screen');
-    }
-   
     var buttonEl = document.querySelector("#clear-highscore")
     buttonEl.addEventListener("click", function () {
         localStorage.removeItem("Highscore")
