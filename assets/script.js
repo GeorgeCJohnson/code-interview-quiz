@@ -87,13 +87,13 @@ document.addEventListener ('DOMContentLoaded', function () {
             answerButtonsEl.appendChild(answerButton);
         }
 
-        // Attach event listener to answer buttons
-        for (var i = 0; i < answerButtonsEl.children.length; i++) {
-            answerButtonsEl.children[i].addEventListener('click', checkAnswers);
+// Attach event listener to answer buttons
+    for (var i = 0; i < answerButtonsEl.children.length; i++) {
+    answerButtonsEl.children[i].addEventListener('click', checkAnswers);
         }
     }
 
-    //Tmeout for wrong answers
+//Tmeout for wrong answers
     function checkAnswers(event) {
         var answer = event.target.getAttribute('data-answer');
         var result = document.getElementById('result');
@@ -112,60 +112,59 @@ document.addEventListener ('DOMContentLoaded', function () {
         }
     }
 
-    // Saving the score
-    var submitButton = document.getElementById('submit');
-
+// Function to show high score results
     function showHighscores() {
-        var startScreenEl = document.getElementById('start-screen');
+    var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
+    var highscoreListEl = document.getElementById('highscorelist');
+    highscoreListEl.innerHTML = '';
+  
+    highScores.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  
+    for (var i = 0; i < highScores.length; i++) {
+      var highScoreEl = document.createElement("tr");
+      highScoreEl.innerHTML = "<td>" + highScores[i].score + "</td><td>" + highScores[i].initials + "</td>";
+      highscoreListEl.appendChild(highScoreEl);
     }
+    } 
 
-    function saveScore() {
-        var initials = initialsInput.value.trim();
+// Saving the score
+var submitButton = document.getElementById('submit');
+function saveScore() {
+    var initials = initialsInput.value.trim();
         if (initials !== '') {
             var highscores = JSON.parse(window.localStorage.getItem('highscores')) || [];
             var newScore = {
                 score: time,
                 initials: initials,
             };
-            highscores.push(newScore);
-            localStorage.setItem('highscores', JSON.stringify(highscores));
-            showHighscores();
+    highscores.push(newScore);
+        localStorage.setItem('highscores', JSON.stringify(highscores));
+        showHighscores();
         }
     }
 
-    submitButton.addEventListener('click', saveScore);
+submitButton.addEventListener('click', saveScore);
 
-    //Ending the quiz
-    function endQuiz() {
-        clearInterval(timeInterval);
-        var endScreenEl = document.getElementById('end-screen');
-        endScreenEl.style.display = 'block';
+//Ending the quiz
+function endQuiz() {
+    clearInterval(timeInterval);
+    var endScreenEl = document.getElementById('end-screen');
+    endScreenEl.style.display = 'block';
 
-        var finalScoreEl = document.getElementById('final-score');
-        finalScoreEl.textContent = time;
+    var finalScoreEl = document.getElementById('final-score');
+    finalScoreEl.textContent = time;
 
-        var questionEl = document.getElementById('question');
-        questionEl.style.display = 'none';
-    }
-    function highScorelist(highScores) {
-        document.querySelector("#highscore").style.display = "block"; 
-        var highscoreListEl = document.getElementById ('highscorelist');
-        highscoreListEl.innerHTML = '';
-        highScores.sort(function (a, b) {
-            return b.score - a.score;
-        })
-        for (var i = 0; i < highScores.length; i++) {
-            var highScoreEl = document.createElement("tr");
-            highScoreEl.innerHTML = "<td>" + highScores[i].score + "</td><td>" + highScores[i].initials + "</td>";
-            highscoreListEl.appendChild(highScoreEl);
-        }
+    var questionEl = document.getElementById('question');
+    questionEl.style.display = 'none';
     }
 
-    var buttonEl = document.querySelector("#clear-highscore")
+var buttonEl = document.querySelector("#clear-highscore")
     buttonEl.addEventListener("click", function () {
-        localStorage.removeItem("Highscore")
-        var highScorelist = document.querySelector("#highscorelist")
-        highScorelist.innerHTML = "";
+    localStorage.removeItem("Highscore")
+    var highScorelist = document.querySelector("#highscorelist")
+    highScorelist.innerHTML = "";
     })
 
 });
