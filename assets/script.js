@@ -1,7 +1,5 @@
 //Quiz opens on page load
-document.addEventListener
-
-('DOMContentLoaded', function () {
+document.addEventListener ('DOMContentLoaded', function () {
 
     var questions = [
 
@@ -117,6 +115,10 @@ document.addEventListener
     // Saving the score
     var submitButton = document.getElementById('submit');
 
+    function showHighscores() {
+        var startScreenEl = document.getElementById('start-screen');
+    }
+
     function saveScore() {
         var initials = initialsInput.value.trim();
         if (initials !== '') {
@@ -146,8 +148,8 @@ document.addEventListener
         questionEl.style.display = 'none';
     }
     function highScorelist(highScores) {
-        document.querySelector("#highscore").style.display = "block"; // Corrected ID
-        var highscoreListEl = document.getElementById('highscorelist');
+        document.querySelector("#highscore").style.display = "block"; 
+        var highscoreListEl = document.getElementById ('highscorelist');
         highscoreListEl.innerHTML = '';
         highScores.sort(function (a, b) {
             return b.score - a.score;
@@ -158,6 +160,11 @@ document.addEventListener
             highscoreListEl.appendChild(highScoreEl);
         }
     }
+
+    function showHighscores() {
+        var startScreenEl = document.getElementById('start-screen');
+    }
+   
     var buttonEl = document.querySelector("#clear-highscore")
     buttonEl.addEventListener("click", function () {
         localStorage.removeItem("Highscore")
