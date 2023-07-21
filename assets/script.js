@@ -166,5 +166,3 @@ document.addEventListener
     })
 
 });
-script.js
-7 KB
