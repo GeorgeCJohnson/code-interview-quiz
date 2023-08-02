@@ -84,10 +84,6 @@ p#timer {
   background-color: #f3f3f3;
 }
 
-#end-screen {
-  display: none;
-}
-
 #submit {
   padding: 10px 20px;
   font-size: 16px;
@@ -108,4 +104,7 @@ p#timer {
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.hide { display: none; 
 }
